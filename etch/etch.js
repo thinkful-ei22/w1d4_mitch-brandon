@@ -2,15 +2,28 @@
 
 // Add Event Listeners here:
 
+//Check for hover
+
+
 
 // When DOM is ready:
 $(() => {
   createAndPlaceRows(8);
-
+console.log("Check 12");
   // Bind your event listeners here:
+
+  $('.grid').on('mouseover','.cell', function(event) {
+    //console.log('Say Something');
+     $(this).addClass('active');
+    // console.log('This is working.');
+  });
+
+$('.controls').on('click', 'button', function(event) {
+console.log('we are clicking');
+  createAndPlaceRows(8);
 });
 
-
+});
 
 
 
