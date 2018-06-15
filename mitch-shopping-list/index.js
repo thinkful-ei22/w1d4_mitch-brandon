@@ -1,49 +1,30 @@
 'use strict';
 
-$(() => {
+(() => {
 
 // In terms of user experience, your shopping list app must allow users to:
 
 // enter items they need to purchase by entering text and hitting "Return" or clicking the 
 // "Add item" button
-  // $('#js-shopping-list-form').submit(click => {
-  //   console.log('add item!');
-  // });
-
-  // $('button').on('click', function(event) {
-  //   event.preventDefault();
-  //   console.log('ok');
-
-  // });
-
-  $('#js-shopping-list-form').on('click', function(event){
-    $('button').on('click', function(event) {
-      alert('add item!');
-    });
+  $('#js-shopping-list-form button').on('click', function(){
+    event.preventDefault();
+    let entry = $('.js-shopping-list-entry').val();
+    $('.shopping-list').append(`<li><span class="shopping-item">${entry}</span><div class="shopping-item-controls">
+          <button class="shopping-item-toggle"><span class="button-label">check</span></button>
+          <button class="shopping-item-delete"><span class="button-label">delete</span></button></div></li>`);
   });
 
   // check and uncheck items on the list by clicking the "Check" button
-
-  $(function(){
-    $('.shopping-item-toggle').on('click', function(event){
-      alert('check!');
-    });
-
+  $('.shopping-list').on('click', '.shopping-item-toggle', function(){
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
   });
 
   // permanently remove items from the list
-
-  $(function(){
-    $('.shopping-item-delete').on('click', function(event) {
-      alert('delete');
-      $();
-
-    });
+  $('.shopping-list').on('click', '.shopping-item-delete', function(){
+    $(this).closest('li').remove();
   });
+
 
 // Hint: you may find it helpful to read up on and use the following jQuery methods: 
 // .submit(), preventDefault(), toggleClass(), and closest().
-
-
-
-});
+})();
